@@ -58,10 +58,14 @@ public class Project1{
 		return -1;
 	}
 	
-	private static int getDesignationIndex(char code, Designation[] desg){
-		for(int i=0;i<desg.length;i++)
-			if(desg[i].Designation_Code == code)
-				return i;
+	private static int getDesignationIndex(char code){
+		switch(code){
+			case 'e': return 0;
+			case 'c': return 1;
+			case 'k': return 2;
+			case 'r': return 3;
+			case 'm': return 4;
+		}
 		return -1;
 	}
 	
@@ -76,7 +80,7 @@ public class Project1{
 			int empId = Integer.parseInt(args[0]);
 			int empIndex = empExists(empId,emp);
 			if(empIndex != -1){
-				int desgIndex = getDesignationIndex(emp[empIndex].Designation_Code,desg);
+				int desgIndex = getDesignationIndex(emp[empIndex].Designation_Code);
 				System.out.println("Emp No. Emp Name\tDepartment\tDesignation\tSalary");
 				System.out.println(empId + "\t" + emp[empIndex].Emp_Name + "\t\t" + emp[empIndex].Department + "\t\t" + desg[desgIndex].Designation + "\t" + (emp[empIndex].Basic + emp[empIndex].HRA + desg[desgIndex].DA - emp[empIndex].IT));
 			}else
